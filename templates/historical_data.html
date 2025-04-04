@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Historical Environmental Data{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-6">Historical Data </h2>
+
+
+<div class="table-container">
+    <table class="data-table historical-data-table">
+        <thead>
+            <tr>
+
+                <th scope="col">Greenhouse</th>
+                <th scope="col">Temp (°C)</th>
+                <th scope="col">Humidity (%)</th>
+                <th scope="col">CO2 (ppm)</th>
+                <th scope="col">Light (lux)</th>
+                <th scope="col">Soil pH</th>
+                <th scope="col">Soil Moisture (%)</th>
+                <th scope="col">Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+            <tr>
+
+                <td>{{ entry.greenhouse.name if entry.greenhouse else entry.greenhouse_id }}</td>
+                <td>{{ '%.2f'|format(entry.temperature) }}</td>
+                <td>{{ '%.1f'|format(entry.humidity) }}</td>
+                <td>{{ '%.1f'|format(entry.co2) }}</td>
+                <td>{{ '%.0f'|format(entry.light_intensity) }}</td>
+                <td>{{ '%.2f'|format(entry.soil_ph) }}</td>
+                <td>{{ '%.1f'|format(entry.soil_moisture) }}</td>
+                <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') if entry.timestamp else 'N/A' }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="8" class="no-data-row">
+                    No manually entered environmental data found in the system.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-container {
+        overflow-x: auto;
+        border: 1px solid #a7f3d0;
+        border-radius: 6px;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 128, 0, 0.1);
+    }
+
+    .data-table.historical-data-table {
+        width: 100%;
+        border-collapse: collapse; /* Remove space between borders */
+        font-size: 0.9rem;
+    }
+
+    .data-table.historical-data-table thead {
+        background-color: #e6fffa;
+        color: #047857;
+        border-bottom: 2px solid #a7f3d0;
+    }
+
+    .data-table.historical-data-table th {
+        padding: 10px 12px;
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .data-table.historical-data-table tbody tr {
+        border-bottom: 1px solid #d1fae5;
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    .data-table.historical-data-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .data-table.historical-data-table tbody td {
+        padding: 9px 12px;
+        color: #374151;
+        vertical-align: middle;
+    }
+
+    /* --- Hover Effect --- */
+    .data-table.historical-data-table tbody tr:hover {
+        background-color: #f0fdf4;
+    }
+
+    .no-data-row td {
+        text-align: center;
+        padding: 20px;
+        color: #6b7280;
+        font-style: italic;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+# --- Environment ---
+# Secrets and local environment variables (MUST BE IGNORED)
+.env
+
+# Virtual Environments (Common names)
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+wheelhouse/
+MANIFEST
+
+# --- IDEs / Editors ---
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Other common editor files
+*.project
+
+# --- Operating System ---
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# --- Flask specific ---
+# Instance folder (often used for local config overrides or SQLite DBs)
+instance/
+
+# --- Databases ---
+# If using SQLite for local dev/testing (even if prod is different)
+*.db
+*.sqlite
+*.sqlite3
+# Add specific database file names if they are fixed
+# e.g., dev.db
+
+# --- Testing ---
+# Coverage reports
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Pytest cache
+.pytest_cache/
+pytestdebug.log
+
+# --- Logs ---
+# Application log files
+*.log
+logs/
+
+# --- Temporary Files ---
+# Common temp file patterns (Vim, Emacs, etc.)
+*~
+*.swp
+*.swo
+# If you use specific backup naming conventions
+# *.bak
+
+# --- Add any project-specific generated files below ---
+# Example: If you had a static asset build process
+# static/bundles/
+# node_modules/
